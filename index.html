@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2-Emissionen-Länder</title>
+    <script src="/assets/js/headerfooter.js"></script> <!--Script zum einbidnden von Header und Footer -->
+    <script src="/assets/js/tabelle.js"></script> <!--Sortierfunktion der Tabelle-->
+    <script src="/assets/js/sortvalue.js"></script> <!--Sortierfunktion nach Emissionswert-->
+    <script src="/assets/js/sortabc.js"></script> <!--Sortierfunktion nach Alphabet-->
+    <script src="/assets/js/ergebnisse.js"></script> <!--Einstellung der angezeigten Ergebnisse-->
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css"> <!--bindet das Stylesheet ein-->
+</head>
+<body>
+
+    <div id="header"></div> 
+    <main>
+      <a href="/content/CO2-Unternehmen.html"><button>Unternehmen</button></a> <!--Button zum Umschalten auf Unternehmen-->
+      <button class="sortbutton" onclick="sortTableByName()">nach Land sortieren</button> <!--sortabc Button-->
+      <button class="sortbutton" onclick="sortTableByValue()">nach CO²-Emissionen sortieren</button><!--sortvalue Button-->
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Suchbegriff eingeben..."> <!--Eingabefeld-->
+
+    <div id="epsbalken"> <!--ID zum leichteren Styling-->
+      <label for="pageSize">Ergebnisse pro Seite:</label>
+      <select id="pageSize" onchange="changePage()"> <!--Select gibt Nutzer Optionsmenü-->
+        <option value="10" selected>10</option> <!--Angabe, wieviel Ergebnisse Standard sind-->
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+        <option value="all">Alle</option>
+      </select>
+    </div>
+
+
+    <table id="myTable"> <!--Tabelle-->
+      <tr class="header">
+        <th style="width:60%;">Land</th>
+        <th style="width:33%;">CO²-Emissionen in Tonnen/Jahr</th>
+        <th style="width:7%;">Ranking</th>
+      </tr>
+      <tbody>
+        <tr>
+          <td>China</td>
+          <td>10.877.220.000</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>USA</td>
+          <td>5.414.320.000</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>Indien</td>
+          <td>2.654.300.000</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>Russland</td>
+          <td>1.668.530.000</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>Japan</td>
+          <td>1.252.620.000</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>Deutschland</td>
+          <td>776.400.000</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>Iran</td>
+          <td>739.930.000</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>Süd-Korea</td>
+          <td>659.560.000</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>Saudi Arabien</td>
+          <td>616.750.000</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>Kanada</td>
+          <td>601.130.000</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>Indonesien</td>
+          <td>534.290.000</td>
+          <td>11</td>
+        </tr>
+        <tr>
+          <td>Mexico</td>
+          <td>466.650.000</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>Südafrika</td>
+          <td>466.540.000</td>
+          <td>13</td>
+        </tr>
+        <tr>
+          <td>Brasilien</td>
+          <td>443.540.000</td>
+          <td>14</td>
+        </tr>
+        <tr>
+          <td>Australien</td>
+          <td>424.990.000</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Türkei</td>
+          <td>420.240.000</td>
+          <td>16</td>
+        </tr>
+        <tr>
+          <td>Vereinigten Königreiche</td>
+          <td>369.530.000</td>
+          <td>17</td>
+        </tr>
+        <tr>
+          <td>Frankreich</td>
+          <td>325.270.000</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>Italien</td>
+          <td>306.670.000</td>
+          <td>19</td>
+        </tr>
+        <tr>
+          <td>Thailand</td>
+          <td>298.320.000</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td>Polen</td>
+          <td>276.130.000</td>
+          <td>21</td>
+        </tr>
+        <tr>
+          <td>Kazakhstan</td>
+          <td>274.400.000</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <td>Ukraine</td>
+          <td>256.140.000</td>
+          <td>23</td>
+        </tr>
+        <tr>
+          <td>Spanien</td>
+          <td>246.470.000</td>
+          <td>24</td>
+        </tr>
+        <tr>
+          <td>Argentinien</td>
+          <td>222.490.000</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>Peru</td>
+          <td>137.900.000</td>
+          <td>26</td>
+        </tr>
+        <tr>
+          <td>Malaysien</td>
+          <td>132.760.000</td>
+          <td>27</td>
+        </tr>
+        <tr>
+          <td>Vietnam</td>
+          <td>127.560.000</td>
+          <td>28</td>
+          </tr>
+          <tr>
+            <td>Philippinen</td>
+            <td>130.490.000</td>
+            <td>29</td>
+          </tr>
+          <tr>
+            <td>Niederlande</td>
+            <td>123.290.000</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>Ägypten</td>
+            <td>119.980.000</td>
+            <td>31</td>
+          </tr>
+          <tr>
+            <td>Uzbekistan</td>
+            <td>115.300.000</td>
+            <td>32</td>
+          </tr>
+          <tr>
+            <td>Kolumbien</td>
+            <td>92.540.000</td>
+            <td>33</td>
+          </tr>
+          <tr>
+            <td>Qatar</td>
+            <td>86.410.000</td>
+            <td>34</td>
+          </tr>
+          <tr>
+            <td>Bangladesh</td>
+            <td>80.410.000</td>
+            <td>35</td>
+          </tr>
+          <tr>
+            <td>Belgien</td>
+            <td>79.910.000</td>
+            <td>36</td>
+          </tr>
+          <tr>
+            <td>Iraq</td>
+            <td>75.030.000</td>
+            <td>37</td>
+          </tr>
+          <tr>
+            <td>Chile</td>
+            <td>73.660.000</td>
+            <td>38</td>
+          </tr>
+          <tr>
+            <td>Kuwait</td>
+            <td>69.690.000</td>
+            <td>39</td>
+          </tr>
+          <tr>
+            <td>Griechenland</td>
+            <td>65.910.000</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <td>Tschechien</td>
+            <td>64.980.000</td>
+            <td>41</td>
+          </tr>
+          <tr>
+            <td>Rumänien</td>
+            <td>61.850.000</td>
+            <td>42</td>
+          </tr>
+          <tr>
+            <td>Portugal</td>
+            <td>57.990.000</td>
+            <td>43</td>
+          </tr>
+          <tr>
+            <td>Israel</td>
+            <td>53.410.000</td>
+            <td>44</td>
+          </tr>
+          <tr>
+            <td>Oman</td>
+            <td>53.010.000</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>Schweden</td>
+            <td>52.940.000</td>
+            <td>46</td>
+          </tr>
+          <tr>
+            <td>Österreich</td>
+            <td>52.360.000</td>
+            <td>47</td>
+          </tr>
+          <tr>
+            <td>Syrien</td>
+            <td>49.440.000</td>
+            <td>48</td>
+          </tr>
+          <tr>
+            <td>Schweiz</td>
+            <td>48.730.000</td>
+            <td>49</td>
+          </tr>
+          <tr>
+            <td>Jamaika</td>
+            <td>46.330.000</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Ungarn</td>
+            <td>43.980.000</td>
+            <td>51</td>
+          </tr>
+          <tr>
+            <td>Belarus</td>
+            <td>41.790.000</td>
+            <td>52</td>
+          </tr>
+          <tr>
+            <td>Honduras</td>
+            <td>38.930.000</td>
+            <td>53</td>
+          </tr>
+          <tr>
+            <td>Finnland</td>
+            <td>38.770.000</td>
+            <td>54</td>
+          </tr>
+          <tr>
+            <td>Libien</td>
+            <td>38.140.000</td>
+            <td>55</td>
+          </tr> 
+          <tr>
+            <td>Slovakei</td>
+            <td>36.900.000</td>
+            <td>56</td>
+          </tr>
+          <tr>
+            <td>Pakistan</td>
+            <td>36.070.000</td>
+            <td>57</td>
+          </tr>
+          <tr>
+            <td>Tunesien</td>
+            <td>35.710.000</td>
+            <td>58</td>
+          </tr>
+          <tr>
+            <td>Bulgarien</td>
+            <td>35.560.000</td>
+            <td>59</td>
+          </tr>
+          <tr>
+            <td>Serbien</td>
+            <td>34.630.000</td>
+            <td>60</td>
+          </tr>
+          <tr>
+            <td>Neuseeland</td>
+            <td>33.620.000</td>
+            <td>61</td>
+          </tr>
+          <tr>
+            <td>Kroatien</td>
+            <td>31.160.000</td>
+            <td>62</td>
+          </tr>
+          <tr>
+            <td>Sri Lanka</td>
+            <td>30.940.000</td>
+            <td>63</td>
+          </tr>
+          <tr>
+            <td>Azerbaijan</td>
+            <td>29.790.000</td>
+            <td>64</td>
+          </tr>
+          <tr>
+            <td>Lithuanien</td>
+            <td>27.890.000</td>
+            <td>65</td>
+          </tr>
+          <tr>
+            <td>Lebanon</td>
+            <td>26.450.000</td>
+            <td>66</td>
+          </tr>
+          <tr>
+            <td>Puerto Rico</td>
+            <td>25.450.000</td>
+            <td>67</td>
+          </tr>
+          <tr>
+            <td>Ghana</td>
+            <td>25.160.000</td>
+            <td>68</td>
+          </tr>
+          <tr>
+            <td>Estland</td>
+            <td>24.510.000</td>
+            <td>69</td>
+          </tr>
+          <tr>
+            <td>Latvia</td>
+            <td>22.540.000</td>
+            <td>70</td>
+          </tr>
+          <tr>
+            <td>Uruguay</td>
+            <td>20.980.000</td>
+            <td>71</td>
+          </tr>
+          <tr>
+            <td>Kenya</td>
+            <td>20.180.000</td>
+            <td>72</td>
+          </tr>
+          <tr>
+            <td>Costa Rica</td>
+            <td>19.120.000</td>
+            <td>73</td>
+          </tr>
+          <tr>
+            <td>Bahrain</td>
+            <td>18.630.000</td>
+            <td>74</td>
+          </tr>
+          <tr>
+            <td>Demokratische Republik Kongo</td>
+            <td>18.520.000</td>
+            <td>75</td>
+          </tr>
+          <tr>
+            <td>Panama</td>
+            <td>18.440.000</td>
+            <td>76</td>
+          </tr>
+          <tr>
+            <td>Trinidad und Tobago</td>
+            <td>17.460.000</td>
+            <td>77</td>
+          </tr>
+          <tr>
+            <td>Mauritius</td>
+            <td>16.310.000</td>
+            <td>78</td>
+          </tr>
+          <tr>
+            <td>Cyprus</td>
+            <td>16.180.000</td>
+            <td>79</td>
+          </tr>
+          <tr>
+            <td>Paraguay</td>
+            <td>15.930.000</td>
+            <td>80</td>
+          </tr>
+          <tr>
+            <td>Georgien</td>
+            <td>15.920.000</td>
+            <td>81</td>
+          </tr>
+          <tr>
+            <td>Bosnien und Herzegovina</td>
+            <td>15.910.000</td>
+            <td>82</td>
+          </tr>
+          <tr>
+            <td>Algerien</td>
+            <td>15.400.000</td>
+            <td>83</td>
+          </tr>
+          <tr>
+            <td>Botswana</td>
+            <td>15.210.000</td>
+            <td>84</td>
+            </tr>
+    </table>
+  </main>
+    <div id="footer"></div>
+    <script src="/SQLDeff.js"></script> <!--Sperrt unbeabsichtige Eingabe von Zeichen-->
+</body>
+</html>

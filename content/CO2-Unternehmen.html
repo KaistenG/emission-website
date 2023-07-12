@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2-Emissionen-Unternehmen</title>
+    <script src="../assets/js/headerfooter.js"></script> <!--Script zum einbidnden von Header und Footer -->
+    <script src="../assets/js/tabelle.js"></script> <!--Sortierfunktion der Tabelle-->
+    <script src="../assets/js/sortvalue.js"></script> <!--Sortierfunktion nach Emissionswert-->
+    <script src="../assets/js/sortabc.js"></script> <!--Sortierfunktion nach Alphabet-->
+    <script src="../assets/js/ergebnisse.js"></script> <!--Einstellung der angezeigten Ergebnisse-->
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css"> <!--bindet das Stylesheet ein-->
+</head>
+<body>
+
+    <div id="header"></div>
+    <main>
+      <a href="../index.html"><button>Länder</button></a> <!--bringt einen zurück zur Startseite -->
+      <button class="sortbutton" onclick="sortTableByName()">nach Unternehmen sortieren</button>
+      <button class="sortbutton" onclick="sortTableByValue()">nach CO²-Emissionen sortieren</button>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Suchbegriff eingeben...">
+
+    <div id="epsbalken"> <!--ID zum leichteren Styling-->
+      <label for="pageSize">Ergebnisse pro Seite:</label>
+      <select id="pageSize" onchange="changePage()">
+        <option value="10" selected>10</option> <!--Angabe, wieviel Ergebnisse Standard sind-->
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+        <option value="all">Alle</option>
+      </select>
+    </div>
+    
+    <table id="myTable">
+      <tr class="header">
+        <th style="width:60%;">Unternehmen</th>
+        <th style="width:33%;">CO²-Emissionen in Tonnen/Jahr</th>
+        <th style="width:7%;">Ranking</th>
+      </tr>
+        <tbody>
+          <tr>
+            <td>Saudi Arabian Oil Company (Saudi Arabien)</td>
+            <td>4.380.000.000</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>Chevron (USA)</td>
+            <td>1.540.000.000</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Gazprom (Russland)</td>
+            <td>1.450.000.000</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>ExxonMobil (USA)</td>
+            <td>1.340.000.000</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>National Iranian Oil Company (Iran)</td>
+            <td>1.180.000.000</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>BP (British Petroleum) (Großbritannien)</td>
+            <td>1.070.000.000</td>
+            <td>6</td>
+          </tr>
+          <tr>
+            <td>Royal Dutch Shell (Niederlande/Großbritannien)</td>
+            <td>920.000.000</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <td>Coal India Limited (Indien)</td>
+            <td>890.000.000</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td>Pemex (Mexiko)</td>
+            <td>870.000.000</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>Petróleos de Venezuela S.A. (PDVSA) (Venezuela)</td>
+            <td>810.000.000</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Abu Dhabi National Oil Company (ADNOC) (Vereinigte Arabische Emirate)</td>
+            <td>720.000.000</td>
+            <td>11</td>
+          </tr>
+          <tr>
+            <td>Kuwait Petroleum Corporation (Kuwait)</td>
+            <td>660.000.000</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>TotalEnergies (Frankreich)</td>
+            <td>630.000.000</td>
+            <td>13</td>
+          </tr>
+          <tr>
+            <td>Sonatrach (Algerien)</td>
+            <td>610.000.000</td>
+            <td>14</td>
+          </tr>
+          <tr>
+            <td>Rosneft (Russland)</td>
+            <td>600.000.000</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>National Oil Corporation (Libyen)</td>
+            <td>590.000.000</td>
+            <td>16</td>
+          </tr>
+          <tr>
+            <td>PetroChina (China)</td>
+            <td>590.000.000</td>
+            <td>17</td>
+          </tr>
+          <tr>
+            <td>Peabody Energy (USA)</td>
+            <td>560.000.000</td>
+            <td>18</td>
+          </tr>
+          <tr>
+            <td>Arch Resources (USA)</td>
+            <td>540.000.000</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <td>BHP (Australien/Großbritannien)</td>
+            <td>530.000.000</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>Glencore (Schweiz)</td>
+            <td>510.000.000</td>
+            <td>21</td>
+          </tr>
+          <tr>
+            <td>Shenhua Group (China)</td>
+            <td>510.000.000</td>
+            <td>22</td>
+          </tr>
+          <tr>
+            <td>Anglo American (Großbritannien)</td>
+            <td>500.000.000</td>
+            <td>23</td>
+          </tr>
+          <tr>
+            <td>Yanzhou Coal Mining Company (China)</td>
+            <td>500.000.000</td>
+            <td>24</td>
+          </tr>
+          <tr>
+            <td>RWE Group (Deutschland)</td>
+            <td>490.000.000</td>
+            <td>25</td>
+          </tr>
+          <tr>
+            <td>LUKOIL (Russland)</td>
+            <td>470.000.000</td>
+            <td>26</td>
+          </tr>
+          <tr>
+            <td>E.ON (Deutschland)</td>
+            <td>460.000.000</td>
+            <td>27</td>
+          </tr>
+          <tr>
+            <td>ConocoPhillips (USA)</td>
+            <td>440.000.000</td>
+            <td>28</td>
+          </tr>
+          <tr>
+            <td>Peugeot (Frankreich)</td>
+            <td>440.000.000</td>
+            <td>29</td>
+          </tr>
+          <tr>
+            <td>Essar Oil (Indien)</td>
+            <td>420.000.000</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>Sinopec (China)</td>
+            <td>420.000.000</td>
+            <td>31</td>
+          </tr>
+          <tr>
+            <td>Valero Energy Corporation (USA)</td>
+            <td>410.000.000</td>
+            <td>32</td>
+          </tr>
+          <tr>
+            <td>Surgutneftegas (Russland)</td>
+            <td>410.000.000</td>
+            <td>33</td>
+          </tr>
+          <tr>
+            <td>Eni (Italien)</td>
+            <td>400.000.000</td>
+            <td>34</td>
+          </tr>
+          <tr>
+            <td>Ford Motor Company (USA)</td>
+            <td>400.000.000</td>
+            <td>35</td>
+          </tr>
+          <tr>
+            <td>NTPC Limited (Indien)</td>
+            <td>390.000.000</td>
+            <td>36</td>
+          </tr>
+          <tr>
+            <td>ArcelorMittal (Luxemburg)</td>
+            <td>380.000.000</td>
+            <td>37</td>
+          </tr>
+          <tr>
+            <td>Enel (Italien)</td>
+            <td>380.000.000</td>
+            <td>38</td>
+          </tr>
+          <tr>
+            <td>Dominion Energy (USA)</td>
+            <td>380.000.000</td>
+            <td>39</td>
+          </tr>
+          <tr>
+            <td>Norilsk Nickel (Russland)</td>
+            <td>370.000.000</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <td>Mitsui & Co. (Japan)</td>
+            <td>370.000.000</td>
+            <td>41</td>
+          </tr>
+          <tr>
+            <td>Petrobras (Brasilien)</td>
+            <td>360.000.000</td>
+            <td>42</td>
+          </tr>
+          <tr>
+            <td>Reliance Industries (Indien)</td>
+            <td>350.000.000</td>
+            <td>43</td>
+          </tr>
+          <tr>
+            <td>China National Petroleum Corporation (CNPC) (China)</td>
+            <td>340.000.000</td>
+            <td>44</td>
+          </tr>
+          <tr>
+            <td>Sasol (Südafrika)</td>
+            <td>330.000.000</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <td>General Electric (USA)</td>
+            <td>330.000.000</td>
+            <td>46</td>
+          </tr>
+          <tr>
+            <td>Hyundai Motor Company (Südkorea)</td>
+            <td>320.000.000</td>
+            <td>47</td>
+          </tr>
+          <tr>
+            <td>Duke Energy (USA)</td>
+            <td>320.000.000</td>
+            <td>48</td>
+          </tr>
+          <tr>
+            <td>Nippon Steel (Japan)</td>
+            <td>310.000.000</td>
+            <td>49</td>
+          </tr>
+          <tr>
+            <td>Nestlé (Schweiz)</td>
+            <td>305.000.000</td>
+            <td>50</td>
+          </tr>
+        </tbody>
+      </table>
+  </main>
+    <div id="footer"></div>
+    <script src="../SQLDeff.js"></script> <!--Sperrt unbeabsichtige Eingabe von Zeichen-->
+</body>
+</html>

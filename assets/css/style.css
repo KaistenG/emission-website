@@ -1,0 +1,330 @@
+* {
+  color: white; /* Allgemeine Schriftfarbe */
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background-color: #111111; /* Hauptfarbe des Designs */
+}
+
+main { /* Damit Footer nicht in Tabelle ragt */
+  margin-bottom: 65px;
+}
+
+.unten { /* Damit Footer nicht auf Nebenseiten in den Text ragt */
+  margin-bottom: 70px;
+}
+
+header {
+  background-color:#111111;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap; /* Für Responsive-Design Vereinfachung */
+}
+
+footer {
+  background-color: #111111;
+  padding:0px;
+  position: fixed; /* Soll immer am unteren Ende angezeigt werden */
+  bottom:0px;
+  left:0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.foot {
+  text-align: center;
+  margin: 4px;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+.footul {
+  display: flex;
+}
+ 
+/* Banner */
+h1 {  
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  padding: 1px;
+  font-family: 'Luminari', fantasy;
+  font-weight: 100;
+  position: relative;
+  background: linear-gradient(to right, #111111, #eee, #111111);  /* Graduierung */
+  flex-grow: 1;
+}
+
+h1 a { /*Hintergrund Banner */
+  background: #111111;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  text-decoration: none;
+  letter-spacing: 35px;
+  color: white;
+}
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  }
+
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+}
+
+p { /* Genereller Text Nebenseiten */ 
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ul{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbal {
+  padding-left: 0px;
+} 
+
+.headnav button {
+  width:16em;
+}
+
+
+.logo {
+  padding: 30px;
+  display: flex;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.logo img { /* Größe Logo */
+  width: 200px;
+}
+
+button {
+  display: inline-block;
+  background-color: #111111;
+  border: 1px solid #565656;
+  border-radius: 12px;
+  font-size: 20px;
+  font-family:Arial, Helvetica, sans-serif ;
+  width:16em;
+  padding: 5px;
+  margin: 2px;
+  text-align: center;
+  cursor: pointer;
+}
+
+button:hover { /* Hover Effekt über normalen Buttons */
+  background-color:#565655;
+}
+
+.sortbutton { /* Buttons zum Sortieren */
+  position: relative;
+  background-color: #111111;
+  border: 1px solid #565656;
+  border-radius: 12px;
+  font-size: 20px;
+  font-family:Arial, Helvetica, sans-serif ;
+  padding: 5px;
+  margin: 2px;
+  width: 16em;
+  text-align: center;
+  transition-duration: 0.4s;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.sortbutton:after { /* Effekt beim Klick der Sortierbuttons */
+  content: "";
+  background: #111111;
+  display: flex;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 1.5s
+}
+
+.sortbutton:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+} 
+.sortbutton:hover { /* Hover Effekt über Sortierbuttons */
+  background-color:#565655;
+}
+
+/* Suchzeile */
+#myInput { 
+  position: relative;
+  background-color: #111111;
+  border: 1px solid #565656;
+  border-radius: 12px;
+  font-size: 20px;
+  font-family:Arial, Helvetica, sans-serif ;
+  padding: 5px;
+  margin: 4px;
+  margin-bottom: 12px;
+  width: 16em;
+  text-align: left;
+}
+
+/* Tabelle */
+#myTable {
+  background-image: linear-gradient(rgba(0,0,0,0.4), #111111), url(https://images.unsplash.com/photo-1584701782257-a77b042b1878?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80);
+  background-size: 100%;
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid #565655;
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+  
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+  #myTable tr {
+  border-bottom: 1px solid #565655;
+}
+
+/* Ergebnise pro Seite */
+#epsbalken {
+  background-color: #111111;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 8px;
+  margin-left: auto;
+  color:#565656;
+}
+
+#epsbalken select {
+  color:#565655;
+  background-color: #111111;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  border-width: 2px;
+  border-color: #565656;
+}
+
+label {
+  color: #565656;
+}
+
+
+/* Responsive Design */
+
+/* Anzeige iPads etc. */
+@media screen and (max-width: 1352px) {
+
+  main { 
+
+    margin-bottom: 20px;
+  }
+
+  .unten { /*Abstand für Nebenseiten zum Footer verringern */
+    margin-bottom: 40px;
+  }
+
+  h1 a {
+    font-size:smaller;
+    letter-spacing: 25px;
+  }
+
+  h1 {
+    margin: 0px;
+  }
+
+  .logo {
+    display: block;
+    margin: 5px auto;
+    padding: 5px;
+  }
+  
+  .logo img { /*Verkleinerung Logo */
+    margin: 0 auto;
+    width: 150px;
+  }
+
+  /* Vermitteln und anpassen der Buttons und Eingabezeile */
+  .headnav {
+    display: block;
+    margin: 5px auto;
+  }
+
+button {
+    display: block;
+    margin: 5px auto;   
+  }
+
+.sortbutton {
+    display: block;
+    margin: 5px auto;
+  }  
+
+#myInput {
+    display: block;
+    margin: 5px auto;
+    text-align: center;
+  }
+
+.footul{
+    display: block;
+    margin: 5px auto;
+  }
+
+}
+
+/* Anzeige Smartphones */
+@media screen and (max-width: 600px) {
+
+.logo {
+    padding: 5px;
+  }
+/* Logo weiter verkleinern */
+.logo img {
+    width: 100px;
+  }
+
+h1 {
+    margin: 0px;
+  }
+
+h1 a {
+    font-size:12px;
+    letter-spacing: 15px;
+  }
+
+  /* Verkleinern der Schrift*/
+.sortbutton {
+    font-size: small;
+  }
+
+button {
+    font-size: small;
+  }
+
+#myInput {
+    font-size: small;
+  }
+
+#myTable {
+    font-size: small;
+  }
+
+}
